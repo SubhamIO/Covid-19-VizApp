@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<head>
+    <title>COVID-19 VISUALISER</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_184b3846afd54babad993c2e00a08023 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+
+</head>
+<body>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+.topnav .login-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  width:120px;
+}
+
+.topnav .login-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background-color: #555;
+  color: white;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .login-container button:hover {
+  background-color: green;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .login-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .login-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+</style>
+
+  <div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <div class="login-container">
+    <form action="/predict" method="POST">
+
+      <button type="submit">Refresh</button>
+    </form>
+  </div>
+</div>
+
+
+
+            <div class="folium-map" id="map_184b3846afd54babad993c2e00a08023" ></div>
+
+
+
+
+
+</body>
+<script>
+
+            var map_184b3846afd54babad993c2e00a08023 = L.map(
+                "map_184b3846afd54babad993c2e00a08023",
+                {
+                    center: [21.0, 78.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+
+
+
+
+            var tile_layer_2e5a51f508674df09e9caafd2dc90125 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+            var marker_b69a52413d8d4862a3c982577d1c7385 = L.marker(
+                [11.66702557, 92.73598262],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_3ddb250e14424cc4a9b1762b23a09030 = L.popup({"maxWidth": "100%"});
+
+
+            var html_7ba0173c5d04456eae646e3d383ce97b = $(`<div id="html_7ba0173c5d04456eae646e3d383ce97b" style="width: 100.0%; height: 100.0%;">Andaman and Nicobar Islands Confirmed Cases : 27 Recovered Cases : 11 Dead Cases : 0</div>`)[0];
+            popup_3ddb250e14424cc4a9b1762b23a09030.setContent(html_7ba0173c5d04456eae646e3d383ce97b);
+
+
+        marker_b69a52413d8d4862a3c982577d1c7385.bindPopup(popup_3ddb250e14424cc4a9b1762b23a09030)
+        ;
+
+
+
+
+            marker_b69a52413d8d4862a3c982577d1c7385.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_5d78c411e8ee4a679ec6e3d4cd11f59a = L.marker(
+                [14.7504291, 78.57002559],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_6b9f9f5ffb81473fa88b61fb29b5c011 = L.popup({"maxWidth": "100%"});
+
+
+            var html_5eae60ed522e402e822c0aceebfbdef7 = $(`<div id="html_5eae60ed522e402e822c0aceebfbdef7" style="width: 100.0%; height: 100.0%;">Andhra Pradesh Confirmed Cases : 955 Recovered Cases : 145 Dead Cases : 29</div>`)[0];
+            popup_6b9f9f5ffb81473fa88b61fb29b5c011.setContent(html_5eae60ed522e402e822c0aceebfbdef7);
+
+
+        marker_5d78c411e8ee4a679ec6e3d4cd11f59a.bindPopup(popup_6b9f9f5ffb81473fa88b61fb29b5c011)
+        ;
+
+
+
+
+            marker_5d78c411e8ee4a679ec6e3d4cd11f59a.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_c92f4b3974a74862892adfe5c74f5ba3 = L.marker(
+                [27.10039878, 93.61660071],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_f96acafd0f384e219cda6872c17960c9 = L.popup({"maxWidth": "100%"});
+
+
+            var html_d9d469e3be944f4998af665ebfb6c144 = $(`<div id="html_d9d469e3be944f4998af665ebfb6c144" style="width: 100.0%; height: 100.0%;">Arunachal Pradesh Confirmed Cases : 1 Recovered Cases : 1 Dead Cases : 0</div>`)[0];
+            popup_f96acafd0f384e219cda6872c17960c9.setContent(html_d9d469e3be944f4998af665ebfb6c144);
+
+
+        marker_c92f4b3974a74862892adfe5c74f5ba3.bindPopup(popup_f96acafd0f384e219cda6872c17960c9)
+        ;
+
+
+
+
+            marker_c92f4b3974a74862892adfe5c74f5ba3.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_04ea463e566c4c84a9dadbca2e0f597f = L.marker(
+                [26.7499809, 94.21666744],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_f8102e52573942f6b4c0fbbb708baadb = L.popup({"maxWidth": "100%"});
+
+
+            var html_94b8c6a879a246e9888be9dccf9d9224 = $(`<div id="html_94b8c6a879a246e9888be9dccf9d9224" style="width: 100.0%; height: 100.0%;">Assam Confirmed Cases : 36 Recovered Cases : 19 Dead Cases : 1</div>`)[0];
+            popup_f8102e52573942f6b4c0fbbb708baadb.setContent(html_94b8c6a879a246e9888be9dccf9d9224);
+
+
+        marker_04ea463e566c4c84a9dadbca2e0f597f.bindPopup(popup_f8102e52573942f6b4c0fbbb708baadb)
+        ;
+
+
+
+
+            marker_04ea463e566c4c84a9dadbca2e0f597f.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_24e3ac144ce942b4858d7ee350967055 = L.marker(
+                [25.78541445, 87.4799727],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_9cf9bc6d496240dcb3d271498bb054ec = L.popup({"maxWidth": "100%"});
+
+
+            var html_8ced215ae4c44474a46e9a9c5da279e0 = $(`<div id="html_8ced215ae4c44474a46e9a9c5da279e0" style="width: 100.0%; height: 100.0%;">Bihar Confirmed Cases : 223 Recovered Cases : 46 Dead Cases : 2</div>`)[0];
+            popup_9cf9bc6d496240dcb3d271498bb054ec.setContent(html_8ced215ae4c44474a46e9a9c5da279e0);
+
+
+        marker_24e3ac144ce942b4858d7ee350967055.bindPopup(popup_9cf9bc6d496240dcb3d271498bb054ec)
+        ;
+
+
+
+
+            marker_24e3ac144ce942b4858d7ee350967055.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_49168587c626478397a1db99668a0a32 = L.marker(
+                [30.71999697, 76.78000565],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_b50e85a5597e4b3aa0ed06328356db54 = L.popup({"maxWidth": "100%"});
+
+
+            var html_bea6497ebd1040ae84361b1f4ee0a208 = $(`<div id="html_bea6497ebd1040ae84361b1f4ee0a208" style="width: 100.0%; height: 100.0%;">Chandigarh Confirmed Cases : 27 Recovered Cases : 14 Dead Cases : 0</div>`)[0];
+            popup_b50e85a5597e4b3aa0ed06328356db54.setContent(html_bea6497ebd1040ae84361b1f4ee0a208);
+
+
+        marker_49168587c626478397a1db99668a0a32.bindPopup(popup_b50e85a5597e4b3aa0ed06328356db54)
+        ;
+
+
+
+
+            marker_49168587c626478397a1db99668a0a32.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_82582c845838448bab116a658905def9 = L.marker(
+                [22.09042035, 82.15998734],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_73c0896c539a4f0892d37c1d8f040594 = L.popup({"maxWidth": "100%"});
+
+
+            var html_fec15fdb53844734a263eab77e7fadd5 = $(`<div id="html_fec15fdb53844734a263eab77e7fadd5" style="width: 100.0%; height: 100.0%;">Chhattisgarh Confirmed Cases : 36 Recovered Cases : 30 Dead Cases : 0</div>`)[0];
+            popup_73c0896c539a4f0892d37c1d8f040594.setContent(html_fec15fdb53844734a263eab77e7fadd5);
+
+
+        marker_82582c845838448bab116a658905def9.bindPopup(popup_73c0896c539a4f0892d37c1d8f040594)
+        ;
+
+
+
+
+            marker_82582c845838448bab116a658905def9.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_10e44341ba9541a6b9d8614831fa2b6d = L.marker(
+                [28.6699929, 77.23000403],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_b7c325b82b1b4eb3bd0cd922365398cc = L.popup({"maxWidth": "100%"});
+
+
+            var html_d8c31fd476954b4897e91ee63afdbdb7 = $(`<div id="html_d8c31fd476954b4897e91ee63afdbdb7" style="width: 100.0%; height: 100.0%;">Delhi Confirmed Cases : 2514 Recovered Cases : 857 Dead Cases : 53</div>`)[0];
+            popup_b7c325b82b1b4eb3bd0cd922365398cc.setContent(html_d8c31fd476954b4897e91ee63afdbdb7);
+
+
+        marker_10e44341ba9541a6b9d8614831fa2b6d.bindPopup(popup_b7c325b82b1b4eb3bd0cd922365398cc)
+        ;
+
+
+
+
+            marker_10e44341ba9541a6b9d8614831fa2b6d.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var circle_marker_4d5caa2ddcaf424e9b905b1d091bcaae = L.circleMarker(
+                [28.6699929, 77.23000403],
+                {"bubblingMouseEvents": true, "color": "#428bca", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca4242", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_8e3dae99911d450d972a3013a67037ce = L.popup({"maxWidth": "100%"});
+
+
+            var html_5a2ce666fdc344d98719b9bd51dd37c9 = $(`<div id="html_5a2ce666fdc344d98719b9bd51dd37c9" style="width: 100.0%; height: 100.0%;">Hotspots</div>`)[0];
+            popup_8e3dae99911d450d972a3013a67037ce.setContent(html_5a2ce666fdc344d98719b9bd51dd37c9);
+
+
+        circle_marker_4d5caa2ddcaf424e9b905b1d091bcaae.bindPopup(popup_8e3dae99911d450d972a3013a67037ce)
+        ;
+
+
+
+
+            circle_marker_4d5caa2ddcaf424e9b905b1d091bcaae.bindTooltip(
+                `<div>
+                     Hotspot
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_5b422ac85c8e47d5bf5628c390168e30 = L.marker(
+                [15.491997, 73.81800065],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_549f3dc03e52442aaa3514274f816eb0 = L.popup({"maxWidth": "100%"});
+
+
+            var html_18778168b7ee455c81ec566e6f21ee0e = $(`<div id="html_18778168b7ee455c81ec566e6f21ee0e" style="width: 100.0%; height: 100.0%;">Goa Confirmed Cases : 7 Recovered Cases : 7 Dead Cases : 0</div>`)[0];
+            popup_549f3dc03e52442aaa3514274f816eb0.setContent(html_18778168b7ee455c81ec566e6f21ee0e);
+
+
+        marker_5b422ac85c8e47d5bf5628c390168e30.bindPopup(popup_549f3dc03e52442aaa3514274f816eb0)
+        ;
+
+
+
+
+            marker_5b422ac85c8e47d5bf5628c390168e30.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_0ffb3cef0578433aa26b2b7b431f815c = L.marker(
+                [22.309425, 72.13623],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_731f248d73494c63b0064742fde387c8 = L.popup({"maxWidth": "100%"});
+
+
+            var html_8c45bc6f66a946bd921ae1e41ab0370f = $(`<div id="html_8c45bc6f66a946bd921ae1e41ab0370f" style="width: 100.0%; height: 100.0%;">Gujarat Confirmed Cases : 2815 Recovered Cases : 265 Dead Cases : 127</div>`)[0];
+            popup_731f248d73494c63b0064742fde387c8.setContent(html_8c45bc6f66a946bd921ae1e41ab0370f);
+
+
+        marker_0ffb3cef0578433aa26b2b7b431f815c.bindPopup(popup_731f248d73494c63b0064742fde387c8)
+        ;
+
+
+
+
+            marker_0ffb3cef0578433aa26b2b7b431f815c.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var circle_marker_844cd0b3e0644cc79a9df8bc79bbac6a = L.circleMarker(
+                [22.309425, 72.13623],
+                {"bubblingMouseEvents": true, "color": "#428bca", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca4242", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_e20721300b5d4bf68c9502fd2878d293 = L.popup({"maxWidth": "100%"});
+
+
+            var html_eba7d11c2c5c41fb934dd5c58aa5f030 = $(`<div id="html_eba7d11c2c5c41fb934dd5c58aa5f030" style="width: 100.0%; height: 100.0%;">Hotspots</div>`)[0];
+            popup_e20721300b5d4bf68c9502fd2878d293.setContent(html_eba7d11c2c5c41fb934dd5c58aa5f030);
+
+
+        circle_marker_844cd0b3e0644cc79a9df8bc79bbac6a.bindPopup(popup_e20721300b5d4bf68c9502fd2878d293)
+        ;
+
+
+
+
+            circle_marker_844cd0b3e0644cc79a9df8bc79bbac6a.bindTooltip(
+                `<div>
+                     Hotspot
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_0744059627f6404e9e615f7dcf23d7e3 = L.marker(
+                [28.45000633, 77.01999101],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_5658055b76ca418cacb93e6d770d7722 = L.popup({"maxWidth": "100%"});
+
+
+            var html_75f00816d1054898a8c048ffa65ecea1 = $(`<div id="html_75f00816d1054898a8c048ffa65ecea1" style="width: 100.0%; height: 100.0%;">Haryana Confirmed Cases : 272 Recovered Cases : 156 Dead Cases : 3</div>`)[0];
+            popup_5658055b76ca418cacb93e6d770d7722.setContent(html_75f00816d1054898a8c048ffa65ecea1);
+
+
+        marker_0744059627f6404e9e615f7dcf23d7e3.bindPopup(popup_5658055b76ca418cacb93e6d770d7722)
+        ;
+
+
+
+
+            marker_0744059627f6404e9e615f7dcf23d7e3.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_833052e8fbb84327acd2daa568772759 = L.marker(
+                [31.10002545, 77.16659704],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_8e6b2dcaca5442b9aef92ffb5038fc9a = L.popup({"maxWidth": "100%"});
+
+
+            var html_1450bd6968ce4542baaf6d69bc4b1c54 = $(`<div id="html_1450bd6968ce4542baaf6d69bc4b1c54" style="width: 100.0%; height: 100.0%;">Himachal Pradesh Confirmed Cases : 40 Recovered Cases : 18 Dead Cases : 1</div>`)[0];
+            popup_8e6b2dcaca5442b9aef92ffb5038fc9a.setContent(html_1450bd6968ce4542baaf6d69bc4b1c54);
+
+
+        marker_833052e8fbb84327acd2daa568772759.bindPopup(popup_8e6b2dcaca5442b9aef92ffb5038fc9a)
+        ;
+
+
+
+
+            marker_833052e8fbb84327acd2daa568772759.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_b14d3b22d9a04d8883daacf791b636b2 = L.marker(
+                [34.29995933, 74.46665849],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_6be26fe6bcb44fa59647fb4c3c252409 = L.popup({"maxWidth": "100%"});
+
+
+            var html_2812f6128ac941e784ac61dd7048ea93 = $(`<div id="html_2812f6128ac941e784ac61dd7048ea93" style="width: 100.0%; height: 100.0%;">Jammu and Kashmir Confirmed Cases : 454 Recovered Cases : 109 Dead Cases : 5</div>`)[0];
+            popup_6be26fe6bcb44fa59647fb4c3c252409.setContent(html_2812f6128ac941e784ac61dd7048ea93);
+
+
+        marker_b14d3b22d9a04d8883daacf791b636b2.bindPopup(popup_6be26fe6bcb44fa59647fb4c3c252409)
+        ;
+
+
+
+
+            marker_b14d3b22d9a04d8883daacf791b636b2.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_729929743d3e44de8638ae7f58f222c6 = L.marker(
+                [23.80039349, 86.41998572],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_8366df39cba341f382592ed70310c656 = L.popup({"maxWidth": "100%"});
+
+
+            var html_3ac084c179a4490e87258aa65d5cb560 = $(`<div id="html_3ac084c179a4490e87258aa65d5cb560" style="width: 100.0%; height: 100.0%;">Jharkhand Confirmed Cases : 57 Recovered Cases : 8 Dead Cases : 3</div>`)[0];
+            popup_8366df39cba341f382592ed70310c656.setContent(html_3ac084c179a4490e87258aa65d5cb560);
+
+
+        marker_729929743d3e44de8638ae7f58f222c6.bindPopup(popup_8366df39cba341f382592ed70310c656)
+        ;
+
+
+
+
+            marker_729929743d3e44de8638ae7f58f222c6.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_c0694f0f2860417c9b68175b0bad2b2f = L.marker(
+                [12.57038129, 76.91999711],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_01b62c92240a4e2f923a2999d47cada8 = L.popup({"maxWidth": "100%"});
+
+
+            var html_2bc69677a12d4fe99cab09c04da21b78 = $(`<div id="html_2bc69677a12d4fe99cab09c04da21b78" style="width: 100.0%; height: 100.0%;">Karnataka Confirmed Cases : 474 Recovered Cases : 152 Dead Cases : 18</div>`)[0];
+            popup_01b62c92240a4e2f923a2999d47cada8.setContent(html_2bc69677a12d4fe99cab09c04da21b78);
+
+
+        marker_c0694f0f2860417c9b68175b0bad2b2f.bindPopup(popup_01b62c92240a4e2f923a2999d47cada8)
+        ;
+
+
+
+
+            marker_c0694f0f2860417c9b68175b0bad2b2f.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_ef82702f472644398e3ac99712a4fe1b = L.marker(
+                [8.900372741, 76.56999263],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_d245e77be06644e78879af297b42cc0f = L.popup({"maxWidth": "100%"});
+
+
+            var html_3873191305674866b63cc2651c35901d = $(`<div id="html_3873191305674866b63cc2651c35901d" style="width: 100.0%; height: 100.0%;">Kerala Confirmed Cases : 450 Recovered Cases : 331 Dead Cases : 3</div>`)[0];
+            popup_d245e77be06644e78879af297b42cc0f.setContent(html_3873191305674866b63cc2651c35901d);
+
+
+        marker_ef82702f472644398e3ac99712a4fe1b.bindPopup(popup_d245e77be06644e78879af297b42cc0f)
+        ;
+
+
+
+
+            marker_ef82702f472644398e3ac99712a4fe1b.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_9bdd43add72b4050a126f2f6741d0b0e = L.marker(
+                [34.152588, 77.577049],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_477f9f15554340f1b049c78f5ba6cc25 = L.popup({"maxWidth": "100%"});
+
+
+            var html_652161fe42e946eb980b10a7a21174c1 = $(`<div id="html_652161fe42e946eb980b10a7a21174c1" style="width: 100.0%; height: 100.0%;">Ladakh Confirmed Cases : 20 Recovered Cases : 14 Dead Cases : 0</div>`)[0];
+            popup_477f9f15554340f1b049c78f5ba6cc25.setContent(html_652161fe42e946eb980b10a7a21174c1);
+
+
+        marker_9bdd43add72b4050a126f2f6741d0b0e.bindPopup(popup_477f9f15554340f1b049c78f5ba6cc25)
+        ;
+
+
+
+
+            marker_9bdd43add72b4050a126f2f6741d0b0e.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_9c79954ea9434527ab00785791f844c8 = L.marker(
+                [21.30039105, 76.13001949],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_00af4842163f4056bc0a92be234b313d = L.popup({"maxWidth": "100%"});
+
+
+            var html_4ee3cb5be9214c2fa4ed64013cb833b3 = $(`<div id="html_4ee3cb5be9214c2fa4ed64013cb833b3" style="width: 100.0%; height: 100.0%;">Madhya Pradesh Confirmed Cases : 1852 Recovered Cases : 210 Dead Cases : 92</div>`)[0];
+            popup_00af4842163f4056bc0a92be234b313d.setContent(html_4ee3cb5be9214c2fa4ed64013cb833b3);
+
+
+        marker_9c79954ea9434527ab00785791f844c8.bindPopup(popup_00af4842163f4056bc0a92be234b313d)
+        ;
+
+
+
+
+            marker_9c79954ea9434527ab00785791f844c8.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var circle_marker_975f85fb6ffc4807ba3545bcb8456416 = L.circleMarker(
+                [21.30039105, 76.13001949],
+                {"bubblingMouseEvents": true, "color": "#428bca", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca4242", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_a38a20df952d425699f028185511124c = L.popup({"maxWidth": "100%"});
+
+
+            var html_39ed13c14337467ea93f9de7e6358c88 = $(`<div id="html_39ed13c14337467ea93f9de7e6358c88" style="width: 100.0%; height: 100.0%;">Hotspots</div>`)[0];
+            popup_a38a20df952d425699f028185511124c.setContent(html_39ed13c14337467ea93f9de7e6358c88);
+
+
+        circle_marker_975f85fb6ffc4807ba3545bcb8456416.bindPopup(popup_a38a20df952d425699f028185511124c)
+        ;
+
+
+
+
+            circle_marker_975f85fb6ffc4807ba3545bcb8456416.bindTooltip(
+                `<div>
+                     Hotspot
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_22c212f43543441fa607a8f092e58836 = L.marker(
+                [19.25023195, 73.16017493],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_27c7f249d3a2414bab1ca2d65975bb55 = L.popup({"maxWidth": "100%"});
+
+
+            var html_19f0429362b549ef80c3c2585e274252 = $(`<div id="html_19f0429362b549ef80c3c2585e274252" style="width: 100.0%; height: 100.0%;">Maharashtra Confirmed Cases : 6817 Recovered Cases : 840 Dead Cases : 301</div>`)[0];
+            popup_27c7f249d3a2414bab1ca2d65975bb55.setContent(html_19f0429362b549ef80c3c2585e274252);
+
+
+        marker_22c212f43543441fa607a8f092e58836.bindPopup(popup_27c7f249d3a2414bab1ca2d65975bb55)
+        ;
+
+
+
+
+            marker_22c212f43543441fa607a8f092e58836.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var circle_marker_2abe5d8d226c4678b30ed0105ed10a9b = L.circleMarker(
+                [19.25023195, 73.16017493],
+                {"bubblingMouseEvents": true, "color": "#428bca", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca4242", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_18a9bb8766034e1dad5f2756e3a7cbad = L.popup({"maxWidth": "100%"});
+
+
+            var html_d33bc8ddca7d490d948d2accde84e89d = $(`<div id="html_d33bc8ddca7d490d948d2accde84e89d" style="width: 100.0%; height: 100.0%;">Hotspots</div>`)[0];
+            popup_18a9bb8766034e1dad5f2756e3a7cbad.setContent(html_d33bc8ddca7d490d948d2accde84e89d);
+
+
+        circle_marker_2abe5d8d226c4678b30ed0105ed10a9b.bindPopup(popup_18a9bb8766034e1dad5f2756e3a7cbad)
+        ;
+
+
+
+
+            circle_marker_2abe5d8d226c4678b30ed0105ed10a9b.bindTooltip(
+                `<div>
+                     Hotspot
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_468e8f01dd4e4ed88e95ba1ac36cf2bb = L.marker(
+                [24.79997072, 93.95001705],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_729c054a83d346bba09cb14448908208 = L.popup({"maxWidth": "100%"});
+
+
+            var html_9e5cce2c96464b409aee6afe07a9fc95 = $(`<div id="html_9e5cce2c96464b409aee6afe07a9fc95" style="width: 100.0%; height: 100.0%;">Manipur Confirmed Cases : 2 Recovered Cases : 2 Dead Cases : 0</div>`)[0];
+            popup_729c054a83d346bba09cb14448908208.setContent(html_9e5cce2c96464b409aee6afe07a9fc95);
+
+
+        marker_468e8f01dd4e4ed88e95ba1ac36cf2bb.bindPopup(popup_729c054a83d346bba09cb14448908208)
+        ;
+
+
+
+
+            marker_468e8f01dd4e4ed88e95ba1ac36cf2bb.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_54f90079cd9c483898549ec301a1ae88 = L.marker(
+                [25.57049217, 91.8800142],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_ddebc08b89c742189d09e02327074ce4 = L.popup({"maxWidth": "100%"});
+
+
+            var html_c4b76fc17b514f62be2c689b664f3203 = $(`<div id="html_c4b76fc17b514f62be2c689b664f3203" style="width: 100.0%; height: 100.0%;">Meghalaya Confirmed Cases : 12 Recovered Cases : 0 Dead Cases : 1</div>`)[0];
+            popup_ddebc08b89c742189d09e02327074ce4.setContent(html_c4b76fc17b514f62be2c689b664f3203);
+
+
+        marker_54f90079cd9c483898549ec301a1ae88.bindPopup(popup_ddebc08b89c742189d09e02327074ce4)
+        ;
+
+
+
+
+            marker_54f90079cd9c483898549ec301a1ae88.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_159a1d93bae14b7a93562954aa43c6bc = L.marker(
+                [23.71039899, 92.72001461],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_c5e8dd5d66ac42fda84b696ebc9635fe = L.popup({"maxWidth": "100%"});
+
+
+            var html_88ac68a8fce44f8da09e457edf9d1474 = $(`<div id="html_88ac68a8fce44f8da09e457edf9d1474" style="width: 100.0%; height: 100.0%;">Mizoram Confirmed Cases : 1 Recovered Cases : 0 Dead Cases : 0</div>`)[0];
+            popup_c5e8dd5d66ac42fda84b696ebc9635fe.setContent(html_88ac68a8fce44f8da09e457edf9d1474);
+
+
+        marker_159a1d93bae14b7a93562954aa43c6bc.bindPopup(popup_c5e8dd5d66ac42fda84b696ebc9635fe)
+        ;
+
+
+
+
+            marker_159a1d93bae14b7a93562954aa43c6bc.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_b55a0eaaf1cc48bc926663748ec92091 = L.marker(
+                [19.82042971, 85.90001746],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_b38525c42ef24b5097471d4b9def9c32 = L.popup({"maxWidth": "100%"});
+
+
+            var html_d9a8ad2b8a9147e58d46df2fc6042ae9 = $(`<div id="html_d9a8ad2b8a9147e58d46df2fc6042ae9" style="width: 100.0%; height: 100.0%;">Odisha Confirmed Cases : 94 Recovered Cases : 33 Dead Cases : 1</div>`)[0];
+            popup_b38525c42ef24b5097471d4b9def9c32.setContent(html_d9a8ad2b8a9147e58d46df2fc6042ae9);
+
+
+        marker_b55a0eaaf1cc48bc926663748ec92091.bindPopup(popup_b38525c42ef24b5097471d4b9def9c32)
+        ;
+
+
+
+
+            marker_b55a0eaaf1cc48bc926663748ec92091.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_31faf5f08da54aa0acd48ce53c1c3e81 = L.marker(
+                [11.93499371, 79.83000037],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_dcecc5ad7b93401ead5738c30315014c = L.popup({"maxWidth": "100%"});
+
+
+            var html_101a55f088af4a75a5cc341b06431b46 = $(`<div id="html_101a55f088af4a75a5cc341b06431b46" style="width: 100.0%; height: 100.0%;">Puducherry Confirmed Cases : 7 Recovered Cases : 3 Dead Cases : 0</div>`)[0];
+            popup_dcecc5ad7b93401ead5738c30315014c.setContent(html_101a55f088af4a75a5cc341b06431b46);
+
+
+        marker_31faf5f08da54aa0acd48ce53c1c3e81.bindPopup(popup_dcecc5ad7b93401ead5738c30315014c)
+        ;
+
+
+
+
+            marker_31faf5f08da54aa0acd48ce53c1c3e81.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_5cd64a2e3b2f4ad0a9e41f06deb8c075 = L.marker(
+                [31.51997398, 75.98000281],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_ff9b123184da494aaec698b08fee7135 = L.popup({"maxWidth": "100%"});
+
+
+            var html_6e81e5340a244ef88eaf980ad9b3a12d = $(`<div id="html_6e81e5340a244ef88eaf980ad9b3a12d" style="width: 100.0%; height: 100.0%;">Punjab Confirmed Cases : 298 Recovered Cases : 67 Dead Cases : 17</div>`)[0];
+            popup_ff9b123184da494aaec698b08fee7135.setContent(html_6e81e5340a244ef88eaf980ad9b3a12d);
+
+
+        marker_5cd64a2e3b2f4ad0a9e41f06deb8c075.bindPopup(popup_ff9b123184da494aaec698b08fee7135)
+        ;
+
+
+
+
+            marker_5cd64a2e3b2f4ad0a9e41f06deb8c075.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_a411eaeb7e5e44d38c10ff536b011724 = L.marker(
+                [26.44999921, 74.63998124],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_7dbda5ff288e46cd82dbf4ffa4d449fa = L.popup({"maxWidth": "100%"});
+
+
+            var html_cf3d5ccc43ca47b1bd379955367873d8 = $(`<div id="html_cf3d5ccc43ca47b1bd379955367873d8" style="width: 100.0%; height: 100.0%;">Rajasthan Confirmed Cases : 2034 Recovered Cases : 230 Dead Cases : 27</div>`)[0];
+            popup_7dbda5ff288e46cd82dbf4ffa4d449fa.setContent(html_cf3d5ccc43ca47b1bd379955367873d8);
+
+
+        marker_a411eaeb7e5e44d38c10ff536b011724.bindPopup(popup_7dbda5ff288e46cd82dbf4ffa4d449fa)
+        ;
+
+
+
+
+            marker_a411eaeb7e5e44d38c10ff536b011724.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var circle_marker_6d1fcdb2901c47e5b424e0bad8a56d02 = L.circleMarker(
+                [26.44999921, 74.63998124],
+                {"bubblingMouseEvents": true, "color": "#428bca", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca4242", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_9ab086fd836b466a97ac770c9fa8abfc = L.popup({"maxWidth": "100%"});
+
+
+            var html_dcad15080e9c42e3976050d2f5207480 = $(`<div id="html_dcad15080e9c42e3976050d2f5207480" style="width: 100.0%; height: 100.0%;">Hotspots</div>`)[0];
+            popup_9ab086fd836b466a97ac770c9fa8abfc.setContent(html_dcad15080e9c42e3976050d2f5207480);
+
+
+        circle_marker_6d1fcdb2901c47e5b424e0bad8a56d02.bindPopup(popup_9ab086fd836b466a97ac770c9fa8abfc)
+        ;
+
+
+
+
+            circle_marker_6d1fcdb2901c47e5b424e0bad8a56d02.bindTooltip(
+                `<div>
+                     Hotspot
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_99e49055554a4caf82df2eb1e6e16f5c = L.marker(
+                [12.92038576, 79.15004187],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_497fd1214da54ed887388a92c89f9ec3 = L.popup({"maxWidth": "100%"});
+
+
+            var html_0de8936e27444ad6b3777d171cb21fb5 = $(`<div id="html_0de8936e27444ad6b3777d171cb21fb5" style="width: 100.0%; height: 100.0%;">Tamil Nadu Confirmed Cases : 1755 Recovered Cases : 866 Dead Cases : 22</div>`)[0];
+            popup_497fd1214da54ed887388a92c89f9ec3.setContent(html_0de8936e27444ad6b3777d171cb21fb5);
+
+
+        marker_99e49055554a4caf82df2eb1e6e16f5c.bindPopup(popup_497fd1214da54ed887388a92c89f9ec3)
+        ;
+
+
+
+
+            marker_99e49055554a4caf82df2eb1e6e16f5c.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var circle_marker_1ae5981954c245e3abb889526c46450f = L.circleMarker(
+                [12.92038576, 79.15004187],
+                {"bubblingMouseEvents": true, "color": "#428bca", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca4242", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_bc8718d391314f568ec92a1d7c51debc = L.popup({"maxWidth": "100%"});
+
+
+            var html_2472e9fd65fc451e818566574547e2ce = $(`<div id="html_2472e9fd65fc451e818566574547e2ce" style="width: 100.0%; height: 100.0%;">Hotspots</div>`)[0];
+            popup_bc8718d391314f568ec92a1d7c51debc.setContent(html_2472e9fd65fc451e818566574547e2ce);
+
+
+        circle_marker_1ae5981954c245e3abb889526c46450f.bindPopup(popup_bc8718d391314f568ec92a1d7c51debc)
+        ;
+
+
+
+
+            circle_marker_1ae5981954c245e3abb889526c46450f.bindTooltip(
+                `<div>
+                     Hotspot
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_4aef9482e2924599a386f6247caf389b = L.marker(
+                [17.123184, 79.208824],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_04cd91ae43a5480b8ead45734fbd07a0 = L.popup({"maxWidth": "100%"});
+
+
+            var html_1b6f8cfe657c48bdb66dca27a1d8cddd = $(`<div id="html_1b6f8cfe657c48bdb66dca27a1d8cddd" style="width: 100.0%; height: 100.0%;">Telengana Confirmed Cases : 984 Recovered Cases : 253 Dead Cases : 26</div>`)[0];
+            popup_04cd91ae43a5480b8ead45734fbd07a0.setContent(html_1b6f8cfe657c48bdb66dca27a1d8cddd);
+
+
+        marker_4aef9482e2924599a386f6247caf389b.bindPopup(popup_04cd91ae43a5480b8ead45734fbd07a0)
+        ;
+
+
+
+
+            marker_4aef9482e2924599a386f6247caf389b.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_b0ce860e34db4663b1b73cc255aab52b = L.marker(
+                [23.83540428, 91.27999914],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_156e3dcc2bbe40b693505d0731a1829f = L.popup({"maxWidth": "100%"});
+
+
+            var html_dc8ec567a8d04d04974336b00a2a973b = $(`<div id="html_dc8ec567a8d04d04974336b00a2a973b" style="width: 100.0%; height: 100.0%;">Tripura Confirmed Cases : 2 Recovered Cases : 1 Dead Cases : 0</div>`)[0];
+            popup_156e3dcc2bbe40b693505d0731a1829f.setContent(html_dc8ec567a8d04d04974336b00a2a973b);
+
+
+        marker_b0ce860e34db4663b1b73cc255aab52b.bindPopup(popup_156e3dcc2bbe40b693505d0731a1829f)
+        ;
+
+
+
+
+            marker_b0ce860e34db4663b1b73cc255aab52b.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_568a412acfb542e7af3e5939c31abfe7 = L.marker(
+                [30.316496, 78.032188],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_3181632959004077b901bf9691fa3492 = L.popup({"maxWidth": "100%"});
+
+
+            var html_b60c13f50b73481da2a4a1e126df64ac = $(`<div id="html_b60c13f50b73481da2a4a1e126df64ac" style="width: 100.0%; height: 100.0%;">Uttarakhand Confirmed Cases : 48 Recovered Cases : 25 Dead Cases : 0</div>`)[0];
+            popup_3181632959004077b901bf9691fa3492.setContent(html_b60c13f50b73481da2a4a1e126df64ac);
+
+
+        marker_568a412acfb542e7af3e5939c31abfe7.bindPopup(popup_3181632959004077b901bf9691fa3492)
+        ;
+
+
+
+
+            marker_568a412acfb542e7af3e5939c31abfe7.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_81f7651ae4484f92a44fe33f4f42ed83 = L.marker(
+                [27.59998069, 78.05000565],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_4601421047d14990a4899ecec8711d33 = L.popup({"maxWidth": "100%"});
+
+
+            var html_4b6d7666c97444acbb9e6b466ee28972 = $(`<div id="html_4b6d7666c97444acbb9e6b466ee28972" style="width: 100.0%; height: 100.0%;">Uttar Pradesh Confirmed Cases : 1621 Recovered Cases : 247 Dead Cases : 25</div>`)[0];
+            popup_4601421047d14990a4899ecec8711d33.setContent(html_4b6d7666c97444acbb9e6b466ee28972);
+
+
+        marker_81f7651ae4484f92a44fe33f4f42ed83.bindPopup(popup_4601421047d14990a4899ecec8711d33)
+        ;
+
+
+
+
+            marker_81f7651ae4484f92a44fe33f4f42ed83.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var circle_marker_67fe09e841414caf9fae103a3ea72a9a = L.circleMarker(
+                [27.59998069, 78.05000565],
+                {"bubblingMouseEvents": true, "color": "#428bca", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ca4242", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30, "stroke": true, "weight": 3}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_6486aa410b1e46c0a03881ef79564d39 = L.popup({"maxWidth": "100%"});
+
+
+            var html_52b6fa2147c5414a815c838463ece331 = $(`<div id="html_52b6fa2147c5414a815c838463ece331" style="width: 100.0%; height: 100.0%;">Hotspots</div>`)[0];
+            popup_6486aa410b1e46c0a03881ef79564d39.setContent(html_52b6fa2147c5414a815c838463ece331);
+
+
+        circle_marker_67fe09e841414caf9fae103a3ea72a9a.bindPopup(popup_6486aa410b1e46c0a03881ef79564d39)
+        ;
+
+
+
+
+            circle_marker_67fe09e841414caf9fae103a3ea72a9a.bindTooltip(
+                `<div>
+                     Hotspot
+                 </div>`,
+                {"sticky": true}
+            );
+
+
+            var marker_174ac37a6fb9407ebb09c79cacd65b3a = L.marker(
+                [22.58039044, 88.32994665],
+                {}
+            ).addTo(map_184b3846afd54babad993c2e00a08023);
+
+
+        var popup_836a000b61254385b0da2872ab11ad91 = L.popup({"maxWidth": "100%"});
+
+
+            var html_37263aa77a2e4bd2941a5c699b661b28 = $(`<div id="html_37263aa77a2e4bd2941a5c699b661b28" style="width: 100.0%; height: 100.0%;">West Bengal Confirmed Cases : 571 Recovered Cases : 103 Dead Cases : 18</div>`)[0];
+            popup_836a000b61254385b0da2872ab11ad91.setContent(html_37263aa77a2e4bd2941a5c699b661b28);
+
+
+        marker_174ac37a6fb9407ebb09c79cacd65b3a.bindPopup(popup_836a000b61254385b0da2872ab11ad91)
+        ;
+
+
+
+
+            marker_174ac37a6fb9407ebb09c79cacd65b3a.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+
+</script>
